@@ -1,0 +1,56 @@
+<odoo>
+    <record id="view_teacher_form" model="ir.ui.view">
+        <field name="name">teacher.form</field>
+        <field name="model">education.teacher</field>
+        <field name="arch" type="xml">
+            <form string="Teacher">
+                <group>
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="phone_number"/>
+                    <field name="email"/>
+                    <field name="gender"/>
+                    <field name="age"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_teacher_tree" model="ir.ui.view">
+        <field name="name">teacher.tree</field>
+        <field name="model">education.teacher</field>
+        <field name="arch" type="xml">
+            <tree string="Teachers">
+                <field name="full_name"/>
+                <field name="phone_number"/>
+                <field name="email"/>
+                <field name="gender"/>
+                <field name="age"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_teacher" model="ir.actions.act_window">
+        <field name="name">Teachers</field>
+        <field name="res_model">education.teacher</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create the first teacher.
+            </p>
+        </field>
+    </record>
+
+    <record id="view_teacher_search" model="ir.ui.view">
+        <field name="name">teacher.search</field>
+        <field name="model">education.teacher</field>
+        <field name="arch" type="xml">
+            <search string="Search Teachers">
+                <field name="full_name" string="Full Name"/>
+            </search>
+        </field>
+    </record>
+
+    <menuitem id="menu_education_management" name="Education Management" sequence="2"/>
+    <menuitem id="menu_teacher" parent="menu_education_management" name="Teachers" action="action_teacher"/>
+</odoo>

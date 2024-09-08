@@ -1,0 +1,35 @@
+<odoo>
+    <record id="view_outcome_graph" model="ir.ui.view">
+        <field name="name">outcome.graph</field>
+        <field name="model">education.outcome</field>
+        <field name="arch" type="xml">
+            <graph string="Outcomes" type="bar">
+                <field name="date" interval="month"/>
+                <field name="amount" type="measure"/>
+                <field name="teacher" type="col"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_outcome_pivot" model="ir.ui.view">
+        <field name="name">outcome.pivot</field>
+        <field name="model">education.outcome</field>
+        <field name="arch" type="xml">
+            <pivot string="Outcomes">
+                <field name="date" type="row"/>
+                <field name="amount" type="measure"/>
+                <field name="teacher" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_outcome_dashboard" model="ir.actions.act_window">
+        <field name="name">Outcome Dashboard</field>
+        <field name="res_model">education.outcome</field>
+        <field name="view_mode">graph,pivot</field>
+    </record>
+
+    <menuitem id="menu_education_management" name="Education Management" sequence="9"/>
+    <menuitem id="menu_outcome_dashboard" parent="menu_education_management" name="Outcome Dashboard"
+              action="action_outcome_dashboard" groups="education_center.group_admin"/>
+</odoo>

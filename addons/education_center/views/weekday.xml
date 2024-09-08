@@ -1,0 +1,37 @@
+<odoo>
+    <record id="view_weekday_form" model="ir.ui.view">
+        <field name="name">weekday.form</field>
+        <field name="model">education.weekday</field>
+        <field name="arch" type="xml">
+            <form string="Weekday">
+                <group>
+                    <field name="name"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_weekday_tree" model="ir.ui.view">
+        <field name="name">weekday.tree</field>
+        <field name="model">education.weekday</field>
+        <field name="arch" type="xml">
+            <tree string="Weekdays">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_weekday" model="ir.actions.act_window">
+        <field name="name">Weekdays</field>
+        <field name="res_model">education.weekday</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create the first weekday.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_education_management" name="Education Management" sequence="6"/>
+    <menuitem id="menu_weekday" parent="menu_education_management" name="Weekdays" action="action_weekday"/>
+</odoo>

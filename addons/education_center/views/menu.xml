@@ -1,0 +1,3 @@
+<odoo>
+    <menuitem id="menu_education_center_root" name="Education Center" sequence="1"/>
+</odoo>

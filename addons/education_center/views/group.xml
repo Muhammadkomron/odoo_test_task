@@ -1,0 +1,51 @@
+<odoo>
+    <record id="view_group_form" model="ir.ui.view">
+        <field name="name">group.form</field>
+        <field name="model">education.group</field>
+        <field name="arch" type="xml">
+            <form string="Group">
+                <group>
+                    <field name="name"/>
+                    <field name="start_time" widget="timepicker"/>
+                    <field name="end_time" widget="timepicker"/>
+                    <field name="weekdays"/>
+                    <field name="price"/>
+                    <field name="course"/>
+                    <field name="teacher" string="Teacher" context="{'search_default_full_name': True}"/>
+                    <field name="students"/>
+                    <field name="incomes"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_group_tree" model="ir.ui.view">
+        <field name="name">group.tree</field>
+        <field name="model">education.group</field>
+        <field name="arch" type="xml">
+            <tree string="Groups">
+                <field name="name"/>
+                <field name="start_time"/>
+                <field name="end_time"/>
+                <field name="weekdays"/>
+                <field name="course"/>
+                <field name="teacher_full_name" string="Teacher"/>
+                <field name="price"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_group" model="ir.actions.act_window">
+        <field name="name">Groups</field>
+        <field name="res_model">education.group</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create the first group.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_education_management" name="Education Management" sequence="4"/>
+    <menuitem id="menu_group" parent="menu_education_management" name="Groups" action="action_group"/>
+</odoo>

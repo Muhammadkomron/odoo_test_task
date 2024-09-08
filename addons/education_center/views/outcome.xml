@@ -1,0 +1,46 @@
+<odoo>
+    <record id="view_outcome_form" model="ir.ui.view">
+        <field name="name">outcome.form</field>
+        <field name="model">education.outcome</field>
+        <field name="arch" type="xml">
+            <form string="Outcome">
+                <group>
+                    <field name="teacher"/>
+                    <field name="amount"/>
+                    <field name="time" widget="timepicker"/>
+                    <field name="date" widget="date"/>
+                    <field name="outcome_type"/>
+                    <field name="notes"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_outcome_tree" model="ir.ui.view">
+        <field name="name">outcome.tree</field>
+        <field name="model">education.outcome</field>
+        <field name="arch" type="xml">
+            <tree string="Outcomes">
+                <field name="teacher"/>
+                <field name="amount"/>
+                <field name="time"/>
+                <field name="date"/>
+                <field name="outcome_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_outcome" model="ir.actions.act_window">
+        <field name="name">Outcomes</field>
+        <field name="res_model">education.outcome</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create the first outcome.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_education_management" name="Education Management" sequence="7"/>
+    <menuitem id="menu_outcome" parent="menu_education_management" name="Outcomes" action="action_outcome"/>
+</odoo>

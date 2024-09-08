@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  odoo:
+    container_name: odoo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - "8069:8069"
+    volumes:
+      - ./addons:/mnt/extra-addons
+      - ./conf:/etc/odoo
+      - odoo-web-data:/var/lib/odoo
+    environment:
+      - HOST=postgres
+      - USER=odoo
+      - PASSWORD=odoo
+
+volumes:
+  odoo-db-data:
+  odoo-web-data:
+
+#docker-compose run --rm odoo odoo -u education_center -d odoo

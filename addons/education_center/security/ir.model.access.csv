@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_course_admin,access_course_admin,model_education_course,education_center.group_admin,1,1,1,1
+access_group_admin,access_group_admin,model_education_group,education_center.group_admin,1,1,1,1
+access_income_admin,access_income_admin,model_education_income,education_center.group_admin,1,1,1,1
+access_outcome_admin,access_outcome_admin,model_education_outcome,education_center.group_admin,1,1,1,1
+access_student_admin,access_student_admin,model_education_student,education_center.group_admin,1,1,1,1
+access_teacher_admin,access_teacher_admin,model_education_teacher,education_center.group_admin,1,1,1,1
+access_weekday_admin,access_weekday_admin,model_education_weekday,education_center.group_admin,1,1,1,1
+
+access_course_sub_admin,access_course_sub_admin,model_education_course,education_center.group_sub_admin,1,1,1,0
+access_group_sub_admin,access_group_sub_admin,model_education_group,education_center.group_sub_admin,1,1,1,0
+access_income_sub_admin,access_income_sub_admin,model_education_income,education_center.group_sub_admin,1,0,1,0
+access_student_sub_admin,access_student_sub_admin,model_education_student,education_center.group_sub_admin,1,1,1,0
+access_teacher_sub_admin,access_teacher_sub_admin,model_education_teacher,education_center.group_sub_admin,1,1,1,0
+access_weekday_sub_admin,access_weekday_sub_admin,model_education_weekday,education_center.group_sub_admin,1,0,0,0

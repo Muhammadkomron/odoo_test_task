@@ -1,0 +1,33 @@
+<odoo>
+    <record id="view_income_graph" model="ir.ui.view">
+        <field name="name">income.graph</field>
+        <field name="model">education.income</field>
+        <field name="arch" type="xml">
+            <graph string="Incomes" type="bar">
+                <field name="date" interval="month"/>
+                <field name="amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_income_pivot" model="ir.ui.view">
+        <field name="name">income.pivot</field>
+        <field name="model">education.income</field>
+        <field name="arch" type="xml">
+            <pivot string="Incomes">
+                <field name="date" type="row"/>
+                <field name="amount" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_income_dashboard" model="ir.actions.act_window">
+        <field name="name">Income Dashboard</field>
+        <field name="res_model">education.income</field>
+        <field name="view_mode">graph,pivot</field>
+    </record>
+
+    <menuitem id="menu_education_management" name="Education Management" sequence="8"/>
+    <menuitem id="menu_income_dashboard" parent="menu_education_management" name="Income Dashboard"
+              action="action_income_dashboard" groups="education_center.group_admin"/>
+</odoo>

@@ -1,0 +1,61 @@
+<odoo>
+    <record id="view_income_form" model="ir.ui.view">
+        <field name="name">income.form</field>
+        <field name="model">education.income</field>
+        <field name="arch" type="xml">
+            <form string="Income">
+                <group>
+                    <field name="student" string="Student" context="{'search_default_full_name': True}"/>
+                    <field name="group"/>
+                    <field name="amount"/>
+                    <field name="check"/>
+                    <field name="time" widget="timepicker"/>
+                    <field name="date" widget="date"/>
+                    <field name="income_type"/>
+                    <field name="notes"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_income_tree" model="ir.ui.view">
+        <field name="name">income.tree</field>
+        <field name="model">education.income</field>
+        <field name="arch" type="xml">
+            <tree string="Incomes">
+                <field name="student_full_name" string="Student"/>
+                <field name="group"/>
+                <field name="amount"/>
+                <field name="date"/>
+                <field name="income_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_income" model="ir.actions.act_window">
+        <field name="name">Incomes</field>
+        <field name="res_model">education.income</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create the first income.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_sub_admin_income" model="ir.actions.act_window">
+        <field name="name">Incomes</field>
+        <field name="res_model">education.income</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('date', '>=', (context_today() -
+            datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]
+        </field>
+        <field name="groups_id" eval="[(4, ref('education_center.group_sub_admin'))]"/>
+    </record>
+
+    <menuitem id="menu_sub_admin_income" name="Recent Incomes" parent="menu_education_management"
+              action="action_sub_admin_income" groups="education_center.group_sub_admin"/>
+
+    <menuitem id="menu_education_management" name="Education Management" sequence="5"/>
+    <menuitem id="menu_income" parent="menu_education_management" name="Incomes" action="action_income"/>
+</odoo>
